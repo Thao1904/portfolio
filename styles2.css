@@ -1,0 +1,488 @@
+
+body {
+    font-family: "Montserrat", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #222;
+    max-width: 1080;
+  }
+
+  
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    /* border-bottom: 1px solid #ddd; */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #FB127F;
+    margin: 0 10px;
+  }
+  
+  .nav-left{
+    font-weight: bold;
+  }
+
+  .navbar a {
+  text-decoration: none;
+  color: #FB127F;
+  margin: 0 10px;
+  position: relative;
+  font-weight: bold;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Position the underline just below the text */
+  width: 0; /* Start with no width */
+  height: 2px; /* Thickness of the underline */
+  background-color: #FB127F;
+  transition: width 0.3s ease-in-out; /* Smooth animation */
+}
+
+.navbar a:hover::after {
+  width: 100%; /* Expand the underline to full width on hover */
+}
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  .text-content {
+    max-width: 60%;
+  }
+  
+  .intro {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .info {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .column h3 {
+    color: #FB127F;
+    margin-bottom: 10px;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .column ul li {
+    margin-bottom: 8px;
+  }
+  
+  .profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .camera-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FB127F; /* Overlay border color */
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 0, 0, 0.1); /* Subtle background for overlay */
+  }
+  
+  .camera-overlay img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+  
+  .camera-overlay::before,
+  .camera-overlay::after {
+    content: '';
+    position: absolute;
+    background-color: #FB127F;
+    z-index: 2;
+  }
+  
+  .camera-overlay::before {
+    width: 100%;
+    height: 10%;
+    top: 0;
+    left: 0;
+  }
+  
+  .camera-overlay::after {
+    width: 10%;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .profile-pic img {
+      margin-top: 20px;
+    }
+  }
+  
+  #webcam {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* width: 100%; */
+    height: 25%;
+    /* object-fit: cover; */
+    /* border-radius: 10px; */
+  }
+
+  .webcam-feed {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    display: none;
+  }
+  
+  .enable-webcam-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .enable-webcam-button:hover {
+    background-color: #0056b3;
+  }
+  
+  video {
+    clear: both;
+    display: block;
+  }
+  
+  section {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  header, footer {
+    clear: both;
+  }
+  
+  button {
+    z-index: 1000;
+    position: relative;
+  }
+  
+  .removed {
+    display: none;
+  }
+  
+  .invisible {
+    opacity: 0.2;
+  }
+  
+  .note {
+    font-style: italic;
+    font-size: 130%;
+  }
+  
+  .webcam {
+    position: relative;
+    width: 200px;
+  }
+  
+  .webcam, .classifyOnClick {
+    position: relative;
+    float: left;
+    width: 48%;
+    margin: 2% 1%;
+    cursor: pointer;
+  }
+  
+  .webcam p, .classifyOnClick p {
+    position: absolute;
+    padding: 5px;
+    background-color: rgba(255, 111, 0, 0.85);
+    color: #FFF;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    z-index: 2;
+    font-size: 12px;
+  }
+  
+  .highlighter {
+    background: rgba(0, 255, 0, 0.25);
+    border: 1px dashed #fff;
+    z-index: 1;
+    position: absolute;
+  }
+  
+  .classifyOnClick {
+    z-index: 0;
+    position: relative;
+  }
+  .classifyOnClick canvas, .webcam canvas.overlay {
+    opacity: 0.66;
+    position: absolute;
+    top: -180px;
+    left: -130%;
+    z-index: 2;
+    max-width: 250%;
+    border-radius: 5%;
+  
+    /* Add 3D effect */
+    transform: perspective(1000px) rotateY(-30deg);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out; /* Optional: Smooth transition */
+  }
+  
+
+
+  #webcamCanvas{
+    opacity: 0;
+  }
+
+#highlightCanvas{
+  /* right: 50%; */
+
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.picture-box {
+  perspective: 1000px; /* Add depth for the 3D effect */
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.66%; /* Aspect ratio of 16:9 */
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+ 
+  background-color: #ffffff;
+  transition: transform 0.3s ease-in-out;
+}
+.picture-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  transform: scale(1) rotateY(0deg); /* Default scale and rotation */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.picture-box:hover img {
+  transform: scale(1.2) rotateY(15deg); /* Scale and rotate on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.picture-title{
+  align-content: center;
+}
+
+
+
+:root{
+
+  --imgSize : calc(1vw + 1vh);
+
+}
+
+.container{
+
+  background-color: #f0f0f0;
+  display: flex;
+  height: 100vh;
+}
+
+
+.imageWrapper{
+
+  display: flex;
+  margin: auto;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.imgRow{
+  opacity: 0;
+  transform-origin: bottom;
+  transition-delay: 0.8s;
+  transition-duration: 1s;
+
+}
+
+
+.imageItem{
+
+  border-radius: 15px;
+  margin: auto;
+  width: calc(var(--imgSize) * 10);
+  height: calc(var(--imgSize) * 15);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: width 1s, height 1s;
+
+}
+
+.paragraph{
+
+  color: #fff;
+}
+
+.title{
+  color: #fff;
+  font-family: Ubuntu;
+
+}
+
+.imageContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  gap: calc(var(--imgSize) * 0.5);
+  transition: gap 1s 0.5s;
+}
+
+
+.textContainer{
+
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(0deg, #141414, #141414bb, #14141400);
+  opacity: 0;
+  height:inherit;
+  justify-content: flex-end;
+  border-radius: 15px;
+  padding-bottom:10px;
+  padding-left: 20px;
+  transition: opacity 0.1s;
+  text-align: left;
+
+}
+
+
+.imageItem:hover .textContainer{
+
+  opacity: 1;
+
+}
+
+.imageItem:hover .textContainer .imgRow{
+
+  opacity: 1;
+
+}
+
+
+.imageItem:hover{
+
+  width: calc(var(--imgSize) * 15);
+  height: calc(var(--imgSize) * 17);
+  animation: elastic-animation 0.5s alternate;
+}
+
+.imageContainer:has(.imageItem:hover){
+
+  gap: calc(var(--imgSize) * 1);
+  
+  
+}
+
+
+@keyframes elastic-animation {
+  0% {
+      transform: scaleX(1);
+  }
+  
+  50% {
+      transform: scaleX(1.1);
+  }
+ 
+  100% {
+      transform: scaleX(1);
+  }
+}
+
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+  overflow: auto; /* Enable scrolling if needed */
+}
+
+.popup-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  height: auto;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup .close:hover {
+  color: #f1f1f1;
+}

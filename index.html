@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Multiple object detection using pre trained model in TensorFlow.js</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jason Mayes">
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Anta&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Phudu:wght@300..900&family=Playwrite+VN:wght@100..400&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/main_page/styles2.css">
+  </head>  
+  <body>
+
+  <nav class="navbar">
+    <a href="/main_page/index.html" >
+      <div class="nav-left">kukutros' corner of appreciation</div>
+    </a>
+    
+    <div class="nav-center">
+      <a href="/main_page/artwork.html">Artwork</a>
+      <a href="/main_page/intractive.html">Interactive Projects</a>
+      <!-- <a href="#artwork">Resume</a> -->
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="text-content">
+      <p class="intro">
+        
+        Saigon-based artist Thao Le creates mixed media portraits exploring identity, emotional isolation, and technology's role in modern connections.
+
+
+      </p>
+      <p>Illustrator | UX/UI Designer | Digital Artist | Graphic Programmer | Oil Painter</p>
+      <div class="info">
+        <div class="column">
+          <h3>Tools</h3>
+          <ul>
+            <li>Illustration</li>
+            <li>Traditional drawing
+            </li>
+            <li>Basic wood carvin</li>
+            <li>Photography and painting</li>
+            <li>Web development (HTML, JavaScript)
+            </li>
+            <li>Blender</li>
+            <li>Adobe Creative Suite</li>
+            <li>Figma</li>
+            <li>Canva</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3> </h3>
+          <ul>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Contact</h3>
+          <ul>
+            <li>Email: thaole.mee@gmail.com</li>
+            <li>
+              <a href="https://www.instagram.com/mee.ltt/" target="_blank" rel="noopener noreferrer">
+                  Instagram
+              </a>
+          </li>
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="profile-pic">
+      <div id="highlightView" class="webcam">
+        <video id="webcam" autoplay playsinline class="overlay"></video>
+        <canvas id="highlightCanvas" class="overlay"></canvas>
+        <button id="webcamButton" class="enable-webcam-button">Enable Webcam</button>
+      </div>
+    </div> -->
+
+    <div id="liveView" class="webcam">
+        <!-- <button id="webcamButton">Enable Webcam</button> -->
+        <video id="webcam" autoplay></video>
+        <canvas id="webcamCanvas" class="overlay"></canvas>
+      </div>
+      <div id="highlightView" class="webcam">
+        <canvas id="highlightCanvas" class="overlay profile"></canvas>
+      </div>
+      
+
+    <section id="demos" class="invisible">
+   
+
+      
+      
+    </section>
+    
+    
+    <!-- Import TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js" type="text/javascript"></script>
+
+    <!-- Load the bodypix model to recognize body parts in images -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
+    
+    <!-- Import the page's JavaScript to do some stuff -->
+    <script src="/main_page/script2.js" defer></script>
+  </body>
+</html>

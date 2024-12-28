@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1em;
+}
+
+.image-gallery img {
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.sticky-button {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.button-link {
+    text-decoration: none;
+    background-color: #FB127F;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-radius 0.3s ease; /* Added border-radius transition */
+}
+
+.button-link:hover {
+    background-color: #ff6ee0;
+    border-radius: 15px; /* Increased border-radius on hover */
+}

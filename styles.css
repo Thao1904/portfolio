@@ -1,0 +1,252 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fff;
+    /* border-bottom: 1px solid #ddd; */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #FB127F;
+    margin: 0 10px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  .text-content {
+    max-width: 60%;
+  }
+  
+  .intro {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .info {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .column h3 {
+    color: #FB127F;
+    margin-bottom: 10px;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .column ul li {
+    margin-bottom: 8px;
+  }
+  
+  .profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .camera-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FB127F; /* Overlay border color */
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 0, 0, 0.1); /* Subtle background for overlay */
+  }
+  
+  .camera-overlay img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+  
+  .camera-overlay::before,
+  .camera-overlay::after {
+    content: '';
+    position: absolute;
+    background-color: #FB127F;
+    z-index: 2;
+  }
+  
+  .camera-overlay::before {
+    width: 100%;
+    height: 10%;
+    top: 0;
+    left: 0;
+  }
+  
+  .camera-overlay::after {
+    width: 10%;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .profile-pic img {
+      margin-top: 20px;
+    }
+  }
+  
+  #webcam {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* width: 100%; */
+    height: 25%;
+    /* object-fit: cover; */
+    /* border-radius: 10px; */
+  }
+
+  .webcam-feed {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    display: none;
+  }
+  
+  .enable-webcam-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .enable-webcam-button:hover {
+    background-color: #0056b3;
+  }
+  
+  video {
+    clear: both;
+    display: block;
+  }
+  
+  section {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  header, footer {
+    clear: both;
+  }
+  
+  button {
+    z-index: 1000;
+    position: relative;
+  }
+  
+  .removed {
+    display: none;
+  }
+  
+  .invisible {
+    opacity: 0.2;
+  }
+  
+  .note {
+    font-style: italic;
+    font-size: 130%;
+  }
+  
+  .webcam {
+    position: relative;
+    width: 200px;
+  }
+  
+  .webcam, .classifyOnClick {
+    position: relative;
+    float: left;
+    width: 48%;
+    margin: 2% 1%;
+    cursor: pointer;
+  }
+  
+  .webcam p, .classifyOnClick p {
+    position: absolute;
+    padding: 5px;
+    background-color: rgba(255, 111, 0, 0.85);
+    color: #FFF;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    z-index: 2;
+    font-size: 12px;
+  }
+  
+  .highlighter {
+    background: rgba(0, 255, 0, 0.25);
+    border: 1px dashed #fff;
+    z-index: 1;
+    position: absolute;
+  }
+  
+  .classifyOnClick {
+    z-index: 0;
+    position: relative;
+  }
+  .classifyOnClick canvas, .webcam canvas.overlay {
+    opacity: 0.66;
+    position: absolute;
+    top: -200px;
+    left: -130%;
+    z-index: 2;
+    max-width: 250%;
+    border-radius: 5%;
+  
+    /* Add 3D effect */
+    transform: perspective(1000px) rotateY(-30deg);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out; /* Optional: Smooth transition */
+  }
+  
+
+
+  #webcamCanvas{
+    opacity: 0;
+  }
+
+#highlightCanvas{
+  /* right: 50%; */
+
+}

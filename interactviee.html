@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Multiple object detection using pre-trained model in TensorFlow.js</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Jason Mayes">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/main_page/styles2.css">
+
+  <style>
+    body {
+      font-family: "Montserrat", serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #222;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #fff;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #FB127F;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 80%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .picture-box {
+      perspective: 1000px;
+      width: 100%;
+      height: 0;
+      padding-bottom: 66.66%;
+      position: relative;
+      border-radius: 2px;
+      overflow: hidden;
+      background-color: #ffffff;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .picture-box img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      transform: scale(1) rotateY(0deg);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .picture-box:hover img {
+      transform: scale(1.2) rotateY(15deg);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+      transition: 0.8s;
+      animation: fadeIn 3s 3s forwards;
+    }
+
+    @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+    .popup-content {
+      margin-top: 8%;
+      /* margin: auto; */
+      display: block;
+      width: 80%;
+      max-width: 900px;
+      height: auto;
+      max-height: 80%;
+      object-fit: contain;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup .close:hover {
+      color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/main_page/index.html">
+      <div class="nav-left">kukutros' corner of appreciation</div>
+    </a>
+    <div class="nav-center">
+      <a href="/main_page/artwork.html">Artwork</a>
+      <a href="/main_page/intractive.html">Interactive Projects</a>
+    </div>
+  </nav>
+
+  <div class="gallery">
+    <a href="/main_page/interaction_Rabbit.html"
+
+    class="picture-box">
+      <img src="/main_page/main_asset/watercolor.jpg" alt=" Picture" >
+    </a>
+    <a href="/main_page/interaction_Flappy.html"
+
+    class="picture-box">
+      <img src="/main_page/main_asset/watercolor.jpg" alt=" Picture" >
+    </a>
+    <a href="/main_page/interaction_Hand.html"
+
+    class="picture-box">
+      <img src="/main_page/main_asset/watercolor.jpg" alt=" Picture" >
+    </a>
+    
+      
+  </div>
+
+  <!-- Popup Container -->
+  <div id="imagePopup" class="popup">
+    <span class="close">&times;</span>
+    <img class="popup-content" id="popupImage" alt="Full Screen Image">
+  </div>
+
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js" type="text/javascript"></script>
+
+  <!-- Load the bodypix model to recognize body parts in images -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
+
+  <!-- JavaScript for Popup -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const popup = document.getElementById('imagePopup');
+      const popupImage = document.getElementById('popupImage');
+      const close = document.querySelector('.popup .close');
+
+      document.querySelectorAll('.popup-trigger').forEach((img) => {
+        img.addEventListener('click', () => {
+          popup.style.display = 'block';
+          popupImage.src = img.src;
+        });
+      });
+
+      close.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+          popup.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
